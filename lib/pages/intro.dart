@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:start/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:start/pages/home.dart';
 
 //https://www.figma.com/proto/HnCTkXrAnWx4GTNo58afqU/Coffee-Shop-Mobile-App-Design--Community-?node-id=421-1221
 class IntorPage extends StatefulWidget {
-  final String title;
-  const IntorPage({super.key, required this.title});
+  const IntorPage({super.key});
 
   @override
   State<IntorPage> createState() => _IntorPageState();
@@ -22,11 +22,6 @@ class _IntorPageState extends State<IntorPage> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text(widget.title),
-      ),
       body: Stack(
         children: [
           Container(decoration: BoxDecoration(color: Colors.black)),
@@ -45,10 +40,23 @@ class _IntorPageState extends State<IntorPage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text("1", style: TextStyle(color: Colors.white, fontSize: 40)),
-              Text("2", style: TextStyle(color: Colors.white, fontSize: 40)),
+              Text(
+                "Welcome Text",
+                style: TextStyle(color: Colors.white, fontSize: 30),
+              ),
+              SizedBox(height: 20),
+              Text(
+                "Welcome Text2",
+                style: TextStyle(color: Colors.white, fontSize: 25),
+              ),
+              SizedBox(height: 40),
               InkWell(
-                onTap: () {
+                onTap: () async {
+                  SharedPreferences preferences =
+                      await SharedPreferences.getInstance();
+
+                  preferences.setBool("openIntro", false);
+
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute<void>(
@@ -56,12 +64,22 @@ class _IntorPageState extends State<IntorPage> {
                     ),
                   );
                 },
-                child: Text(
-                  "To Home Page Button",
-                  style: TextStyle(color: Colors.white, fontSize: 40),
+                child: Container(
+                  width: width,
+                  height: 60,
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFc67c4e),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    "Get Starded",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 40),
             ],
           ),
           Column(children: [Text("DAta", style: TextStyle(color: Colors.red))]),
