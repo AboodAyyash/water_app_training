@@ -68,16 +68,34 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "flutter_localizations",
+      "rootUri": "file:///Users/aboodayyash/development/flutter/packages/flutter_localizations",
+      "packageUri": "lib/",
+      "languageVersion": "3.7"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/aboodayyash/development/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
+      "name": "flutter_translate",
+      "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/flutter_translate-4.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "flutter_web_plugins",
       "rootUri": "file:///Users/aboodayyash/development/flutter/packages/flutter_web_plugins",
       "packageUri": "lib/",
       "languageVersion": "3.7"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "leak_tracker",
@@ -242,6 +260,18 @@
       "languageVersion": "3.5"
     },
     {
+      "name": "typed_data",
+      "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
+    },
+    {
+      "name": "universal_io",
+      "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/universal_io-2.2.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
@@ -272,7 +302,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-05-28T07:51:12.055075Z",
+  "generated": "2025-06-23T10:32:31.905277Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/aboodayyash/development/flutter",

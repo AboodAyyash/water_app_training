@@ -6,6 +6,9 @@ import 'package:start/models/product.dart';
 List<LocationModel> locations = [];
 List<CategoryModel> categories = [];
 List<ProductModel> products = [];
+List<ProductModel> cart = [];
+List<ProductModel> favorate = [];
+
 getLocation() {
   //locations = db.locations;
   for (var i = 0; i < db.locations.length; i++) {
@@ -36,4 +39,42 @@ getProducts() {
       ),
     );
   }
+}
+
+addToCart(ProductModel product) {
+  cart.add(product);
+}
+
+addToFavorate(ProductModel product) {
+  favorate.add(product);
+}
+
+chechInCart(ProductModel product) {
+  bool hasData = false;
+  for (var i = 0; i < cart.length; i++) {
+    if (product.id == cart[i].id) {
+      hasData = true;
+      break;
+    }
+  }
+  return hasData;
+}
+
+chechInFavorite(ProductModel product) {
+  bool hasData = false;
+  for (var i = 0; i < favorate.length; i++) {
+    if (product.id == favorate[i].id) {
+      hasData = true;
+      break;
+    }
+  }
+  return hasData;
+}
+
+removeFromFavorite(ProductModel product) {
+  favorate.remove(product);
+}
+
+removeFromCart(ProductModel product) {
+  cart.remove(product);
 }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_translate/flutter_translate.dart';
 import 'package:start/controllers/home.dart';
+import 'package:start/models/product.dart';
 import 'package:start/shared/shared.dart';
 import 'package:start/widgets/custom-dialog.dart';
+import 'package:start/widgets/product.dart';
 
 class BNBHomePage extends StatefulWidget {
   const BNBHomePage({super.key});
@@ -26,11 +29,15 @@ class _BNBHomePageState extends State<BNBHomePage> {
               child: Column(
                 children: [
                   SizedBox(height: 20),
-                  Text("Location", style: TextStyle(color: Colors.white)),
+                  Text(
+                    translate("currentLocation"),
+                    style: TextStyle(color: Colors.white),
+                  ),
 
                   SizedBox(height: 10),
                   InkWell(
                     onTap: () {
+                      //changeLocale(context, "en");
                       customDataDialog(
                         title: "Select Location",
                         data: locations, // ['Amman', 'Irbid'] ,
@@ -131,17 +138,18 @@ class _BNBHomePageState extends State<BNBHomePage> {
             ],
           ),
         ),
-
-        ListView(
+        GridView.count(
+          physics: ScrollPhysics(),
           shrinkWrap: true,
+          crossAxisCount: 2,
+          childAspectRatio: 0.85,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
           children: [
             for (int i = 0; i < products.length; i++)
               if (products[i].category == selectedCategory.toString() ||
                   selectedCategory.toString() == "0")
-                Text(
-                  "${products[i].name}  ${products[i].category}",
-                  style: TextStyle(color: Colors.red),
-                ),
+                ProductWidget(product: products[i]),
           ],
         ),
       ],

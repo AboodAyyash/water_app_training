@@ -38,24 +38,27 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body:
-          bnbIndex == 0
-              ? BNBHomePage()
-              : bnbIndex == 1
-              ? favoritePage()
-              : bnbIndex == 2
-              ? cartPage()
-              : notifcationPage(),
-      bottomNavigationBar: Container(
-        height: 80,
-        decoration: BoxDecoration(color: Colors.white),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            for (int i = 0; i < bnbIcons.length; i++)
-              bnbIcon(bnbIcons[i].icon, bnbIcons[i].value == bnbIndex, i),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        //drawer: Drawer(),
+        body:
+            bnbIndex == 0
+                ? BNBHomePage()
+                : bnbIndex == 1
+                ? favoritePage()
+                : bnbIndex == 2
+                ? cartPage()
+                : notifcationPage(),
+        bottomNavigationBar: Container(
+          height: 80,
+          decoration: BoxDecoration(color: Colors.white),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              for (int i = 0; i < bnbIcons.length; i++)
+                bnbIcon(bnbIcons[i].icon, bnbIcons[i].value == bnbIndex, i),
+            ],
+          ),
         ),
       ),
     );
