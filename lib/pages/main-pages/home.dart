@@ -42,7 +42,7 @@ class _BNBHomePageState extends State<BNBHomePage> {
                       });
                     },
                     child: Text(
-                      location == '' ? "Location Name" : location,
+                      location == '' ? "Select Location" : location,
                       style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ),
@@ -131,10 +131,24 @@ class _BNBHomePageState extends State<BNBHomePage> {
             ],
           ),
         ),
+
+        ListView(
+          shrinkWrap: true,
+          children: [
+            for (int i = 0; i < products.length; i++)
+              if (products[i].category == selectedCategory.toString() ||
+                  selectedCategory.toString() == "0")
+                Text(
+                  "${products[i].name}  ${products[i].category}",
+                  style: TextStyle(color: Colors.red),
+                ),
+          ],
+        ),
       ],
     );
   }
 }
+
 /* String location = '';
 Widget homePage() {
   return ListView(

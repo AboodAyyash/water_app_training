@@ -1,9 +1,11 @@
 import 'package:start/DB/db.dart' as db;
 import 'package:start/models/category.dart';
 import 'package:start/models/location.dart';
+import 'package:start/models/product.dart';
 
 List<LocationModel> locations = [];
 List<CategoryModel> categories = [];
+List<ProductModel> products = [];
 getLocation() {
   //locations = db.locations;
   for (var i = 0; i < db.locations.length; i++) {
@@ -14,11 +16,24 @@ getLocation() {
 }
 
 getCategories() {
-  //locations = db.locations;
-  categories.add(CategoryModel(id: 0, name: "All Category"));
+  categories.add(CategoryModel(id: 0, name: "All Categories"));
   for (var i = 0; i < db.categories.length; i++) {
     categories.add(
       CategoryModel(id: db.categories[i]['id'], name: db.categories[i]['name']),
+    );
+  }
+}
+
+getProducts() {
+  for (var i = 0; i < db.products.length; i++) {
+    products.add(
+      ProductModel(
+        category: db.products[i]['category'].toString(),
+        id: db.products[i]['id'].toString(),
+        image: db.products[i]['image'].toString(),
+        name: db.products[i]['name'].toString(),
+        price: db.products[i]['price'].toString(),
+      ),
     );
   }
 }
