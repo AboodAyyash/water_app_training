@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:start/apis/home.dart';
 import 'package:start/controllers/home.dart';
 import 'package:start/models/bnb.dart';
 import 'package:start/pages/main-pages/cart.dart';
@@ -33,7 +34,9 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     getLocation();
     getCategories();
-    getProducts();
+    getProducts().then((onValue) {
+      setState(() {});
+    });
   }
 
   @override

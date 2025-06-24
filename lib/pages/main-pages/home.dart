@@ -42,10 +42,13 @@ class _BNBHomePageState extends State<BNBHomePage> {
                         title: "Select Location",
                         data: locations, // ['Amman', 'Irbid'] ,
                       ).then((onValue) {
-                        print(onValue.name);
-                        setState(() {
-                          location = onValue.name;
-                        });
+                        //onValue == null
+                        if (onValue != null) {
+                          print(onValue.name);
+                          setState(() {
+                            location = onValue.name;
+                          });
+                        }
                       });
                     },
                     child: Text(

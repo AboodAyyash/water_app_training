@@ -92,6 +92,18 @@
       "languageVersion": "3.7"
     },
     {
+      "name": "http",
+      "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/http-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "http_parser",
+      "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/http_parser-4.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "intl",
       "rootUri": "file:///Users/aboodayyash/.pub-cache/hosted/pub.dev/intl-0.19.0",
       "packageUri": "lib/",
@@ -302,7 +314,7 @@
       "languageVersion": "3.7"
     }
   ],
-  "generated": "2025-06-23T10:32:31.905277Z",
+  "generated": "2025-06-24T07:41:01.697093Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
   "flutterRoot": "file:///Users/aboodayyash/development/flutter",

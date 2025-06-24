@@ -1,4 +1,5 @@
 import 'package:start/DB/db.dart' as db;
+import 'package:start/apis/home.dart';
 import 'package:start/models/category.dart';
 import 'package:start/models/location.dart';
 import 'package:start/models/product.dart';
@@ -27,18 +28,21 @@ getCategories() {
   }
 }
 
-getProducts() {
-  for (var i = 0; i < db.products.length; i++) {
-    products.add(
-      ProductModel(
-        category: db.products[i]['category'].toString(),
-        id: db.products[i]['id'].toString(),
-        image: db.products[i]['image'].toString(),
-        name: db.products[i]['name'].toString(),
-        price: db.products[i]['price'].toString(),
-      ),
-    );
-  }
+Future getProducts() async {
+  await getProductsURL().then((onValue) {
+    print(onValue.length);
+    for (var i = 0; i < onValue.length; i++) {
+      products.add(
+        ProductModel(
+          category: onValue[i]['category_id'].toString(),
+          id: onValue[i]['id'].toString(),
+          image: onValue[i]['image_url'].toString(),
+          name: onValue[i]['name'].toString(),
+          price: onValue[i]['price'].toString(),
+        ),
+      );
+    }
+  });
 }
 
 addToCart(ProductModel product) {
