@@ -16,7 +16,7 @@ class BNBHomePage extends StatefulWidget {
 class _BNBHomePageState extends State<BNBHomePage> {
   String location = '';
 
-  int selectedCategory = 0;
+  String selectedCategory = "0";
   @override
   Widget build(BuildContext context) {
     return ListView(

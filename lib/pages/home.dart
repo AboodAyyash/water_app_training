@@ -50,8 +50,8 @@ class _HomePageState extends State<HomePage> {
                 : bnbIndex == 1
                 ? favoritePage()
                 : bnbIndex == 2
-                ? cartPage()
-                : notifcationPage(),
+                ? CartPage()
+                : NotifcationPage(),
         bottomNavigationBar: Container(
           height: 80,
           decoration: BoxDecoration(color: Colors.white),

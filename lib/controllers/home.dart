@@ -20,12 +20,18 @@ getLocation() {
 }
 
 getCategories() {
-  categories.add(CategoryModel(id: 0, name: "All Categories"));
-  for (var i = 0; i < db.categories.length; i++) {
-    categories.add(
-      CategoryModel(id: db.categories[i]['id'], name: db.categories[i]['name']),
-    );
-  }
+  categories.add(CategoryModel(id: "0", name: "All Categories"));
+  getCategoriesURL().then((onValue) {
+    print(onValue);
+    for (var i = 0; i < onValue.length; i++) {
+      categories.add(
+        CategoryModel(
+          id: onValue[i]['id'].toString(),
+          name: onValue[i]['category'].toString(),
+        ),
+      );
+    }
+  });
 }
 
 Future getProducts() async {
@@ -47,6 +53,8 @@ Future getProducts() async {
 
 addToCart(ProductModel product) {
   cart.add(product);
+  print(product.id);
+  postCartURL(product.id);
 }
 
 addToFavorate(ProductModel product) {
@@ -81,4 +89,5 @@ removeFromFavorite(ProductModel product) {
 
 removeFromCart(ProductModel product) {
   cart.remove(product);
+  deleteCartURL(product.id);
 }
