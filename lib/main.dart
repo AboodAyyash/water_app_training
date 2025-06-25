@@ -1,6 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
+import 'package:start/firebase_options.dart';
 import 'package:start/pages/splash.dart';
 /* import 'package:start/pages/intro.dart';
 import 'package:start/pages/splash.dart'; */
@@ -8,6 +10,10 @@ import 'package:start/shared/shared.dart';
 import 'package:start/theme/theme.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   var delegate = await LocalizationDelegate.create(
     fallbackLocale: 'en',
     supportedLocales: ['en', 'ar'],
