@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:start/apis/home.dart';
 import 'package:start/pages/home.dart';
 import 'package:start/pages/intro.dart';
 
@@ -17,6 +18,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     check();
   }
 

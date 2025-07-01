@@ -63,7 +63,7 @@ final ThemeData lightTheme = ThemeData(
   ),
 
   // Card Theme
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     color: Colors.white,
     elevation: 2.0,
     margin: const EdgeInsets.all(8.0),
@@ -138,7 +138,7 @@ final ThemeData darkTheme = ThemeData(
   ),
 
   // Card Theme
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     color: Colors.grey[800],
     elevation: 2.0,
     margin: const EdgeInsets.all(8.0),

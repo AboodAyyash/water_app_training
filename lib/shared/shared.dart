@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:start/models/user.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-String baseURL = "http://falafelalbalad.com/api/";
+String baseURL = "http://falafelalbalad.com/api";
+
+User? userData;
+
 
 
 //http://falafelalbalad.com/api/login post 200

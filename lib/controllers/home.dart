@@ -19,9 +19,9 @@ getLocation() {
   }
 }
 
-getCategories() {
+Future getCategories() async {
   categories.add(CategoryModel(id: "0", name: "All Categories"));
-  getCategoriesURL().then((onValue) {
+  await getCategoriesURL().then((onValue) {
     print(onValue);
     for (var i = 0; i < onValue.length; i++) {
       categories.add(

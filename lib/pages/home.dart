@@ -33,7 +33,9 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     getLocation();
-    getCategories();
+    getCategories().then((onValue) {
+      setState(() {});
+    });
     getProducts().then((onValue) {
       setState(() {});
     });

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:start/shared/shared.dart';
 
@@ -12,6 +11,7 @@ Future getProductsURL() async {
 }
 
 Future getCategoriesURL() async {
+  print("$baseURL/categories");
   var response = await http.get(
     Uri.parse("$baseURL/categories"),
     headers: {'Authorization': 'Bearer Y29kZXg6cmVzdF9hcGlfdGVzdAo='},
@@ -49,5 +49,31 @@ Future getCartURL() async {
   return jsonDecode(response.body);
 }
 
+Future login({email, password}) async {
+  try {
+    var response = await http.post(
+      Uri.parse("$baseURL/login"),
+      body: jsonEncode({'email': email, 'password': password}),
+      headers: {'Authorization': 'Bearer Y29kZXg6cmVzdF9hcGlfdGVzdAo='},
+    );
+    print(response.statusCode);
+    return {"body": jsonDecode(response.body), "status": response.statusCode};
+  } catch (e) {
+    print(e);
+  }
+}
 
+Future profile({userId}) async {
+  try {
+    var response = await http.get(
+      Uri.parse("$baseURL/users?id=$userId"),
+
+      headers: {'Authorization': 'Bearer Y29kZXg6cmVzdF9hcGlfdGVzdAo='},
+    );
+    print(response.statusCode);
+    return {"body": jsonDecode(response.body), "status": response.statusCode};
+  } catch (e) {
+    print(e);
+  }
+}
 //login

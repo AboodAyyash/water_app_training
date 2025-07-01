@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_translate/flutter_translate.dart';
 import 'package:start/firebase_options.dart';
+import 'package:start/pages/auth/login.dart';
 import 'package:start/pages/splash.dart';
 /* import 'package:start/pages/intro.dart';
 import 'package:start/pages/splash.dart'; */
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter App',
         // theme: lightTheme,
         // home: const HomePage(),
-        home: SplashPage(),
+        home: LoginPage(),
         //   darkTheme: darkTheme,
         //  themeMode: ThemeMode.dark,
         navigatorKey: navigatorKey,

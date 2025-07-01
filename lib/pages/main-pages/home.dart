@@ -145,7 +145,7 @@ class _BNBHomePageState extends State<BNBHomePage> {
           physics: ScrollPhysics(),
           shrinkWrap: true,
           crossAxisCount: 2,
-          childAspectRatio: 0.85,
+          childAspectRatio: 0.81,
           crossAxisSpacing: 10,
           mainAxisSpacing: 10,
           children: [
