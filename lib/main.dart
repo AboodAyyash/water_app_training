@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter App',
         // theme: lightTheme,
         // home: const HomePage(),
-        home: LoginPage(),
+        home: SplashPage(),
         //   darkTheme: darkTheme,
         //  themeMode: ThemeMode.dark,
         navigatorKey: navigatorKey,

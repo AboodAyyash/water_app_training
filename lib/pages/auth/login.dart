@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:start/apis/home.dart';
 import 'package:start/models/user.dart';
 import 'package:start/pages/auth/profile.dart';
@@ -14,6 +15,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool loading = false;
   String email = '';
   String password = '';
 
@@ -85,50 +87,56 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 20),
                   ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        login(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        ).then((onValue) {
-                          print(onValue);
-                          if (onValue['status'] != 200) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  onValue['body']['status_message'],
-                                ),
-                              ),
-                            );
-                          } else {
-                            print("valid");
-                            profile(userId: onValue['body']['userid']).then((
-                              onValue,
-                            ) {
-                              print(onValue);
-                              userData = User.fromJson(onValue['body']);
-                              print(userData!.fullName);
-                              print(userData);
-                              print(userData!.toJson());
-                              Navigator.pushReplacement<void, void>(
-                                context,
-                                MaterialPageRoute<void>(
-                                  builder:
-                                      (BuildContext context) =>
-                                          const ProfilePag(),
-                                ),
-                              );
-                              /*  setState(() {
-                                image = onValue['body']['image'];
-                              }); */
-                            });
-                          }
-                        });
-                      } else {
-                        print("invalid");
-                      }
-                    },
-                    child: Text('Login'),
+                    onPressed:
+                        loading
+                            ? () {}
+                            : () {
+                              if (_formKey.currentState!.validate()) {
+                                setState(() {
+                                  loading = true;
+                                });
+                                login(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                ).then((onValue) async {
+                                  print(onValue);
+                                  setState(() {
+                                    loading = false;
+                                  });
+                                  if (onValue['status'] != 200) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          onValue['body']['status_message'],
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    SharedPreferences preferences =
+                                        await SharedPreferences.getInstance();
+
+                                    userId = onValue['body']['userid'];
+
+                                    preferences.setString(
+                                      "userId",
+                                      userId.toString(),
+                                    );
+                                    Navigator.pushReplacement<void, void>(
+                                      context,
+                                      MaterialPageRoute<void>(
+                                        builder:
+                                            (BuildContext context) =>
+                                                const ProfilePag(),
+                                      ),
+                                    );
+                                  }
+                                });
+                              } else {
+                                print("invalid");
+                              }
+                            },
+                    child:
+                        loading ? CircularProgressIndicator() : Text('Login'),
                   ),
                   /* 
                   if (image != '')

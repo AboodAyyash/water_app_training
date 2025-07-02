@@ -32,16 +32,25 @@ android {
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
-
+/* signingConfigs {
+        release {
+            storeFile file('/Users/aboodayyash/Desktop/water_app_training/water-app.jks') // Path to your JKS file
+            storePassword '123456'
+            keyAlias 'waterapp'
+            keyPassword '123456'
+        }
+    }  */
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.getByName("debug")
+            // signingConfig signingConfigs.release
         }
     }
 }
-
+//keytool -genkey -v -keystore upload-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+//https://dev.to/teerasej/step-by-step-to-publish-your-flutter-project-as-andriod-app-bundle-1bpe
 flutter {
     source = "../.."
 }
